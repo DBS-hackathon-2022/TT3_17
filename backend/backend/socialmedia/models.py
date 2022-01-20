@@ -12,9 +12,9 @@ class USER(models.Model):
     City = models.CharField(max_length=200)
     Country = models.CharField(max_length = 200)
     
-    def __str__(self):
+    def __int__(self):
         """A string representation of the model."""
-        return self.Name
+        return self.User_ID
 
 
 class POST(models.Model):
