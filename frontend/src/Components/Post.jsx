@@ -51,7 +51,7 @@ function Post(props, {stateChanger, ...rest}) {
     };
 
     const deletePost = (id) => {
-       console.log('delete')
+       //console.log('delete')
         //call POST delete API
         setDeleteAlert(true)
     };
@@ -72,8 +72,8 @@ function Post(props, {stateChanger, ...rest}) {
     const updatePost = (id) => {
         //call API w the input to add post
       
-        console.log(title, description, id ) 
-        console.log(update)
+       // console.log(title, description, id ) 
+        //console.log(update)
         setAlert(!showAlert)
         setUpdate(!update)
         stateChanger(title)

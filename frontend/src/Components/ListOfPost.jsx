@@ -8,10 +8,10 @@ function ListOfPost (props) {
   const[posts, setPosts] = useState(props.posts)
   const[state, setState]=useState('');
 
-  console.log(props)
     useEffect(() => {
       setPosts(props.posts)
-    }, [posts])
+      console.log(posts)
+    }, [props.posts])
 
     useEffect(() => {
       
