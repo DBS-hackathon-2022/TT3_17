@@ -23,7 +23,7 @@ function Profile() {
         <Grid item xs={6}>
           {/* Add new post & all posts */}
           <Post stateChanger={setPosts} />
-          <ProfilePost />
+          <ProfilePost profileOwner={true} />
         </Grid>
 
         <Grid item xs={3}>

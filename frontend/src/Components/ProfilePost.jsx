@@ -39,7 +39,7 @@ class ProfilePost extends Component {
     return this.state.posts.map((post) => {
       return (
         <div style={{ padding: 5 }}>
-          <Post key={post.Post_ID} post={post} />{" "}
+          <Post key={post.Post_ID} post={post} profileOwner={this.props.profileOwner}/>{" "}
         </div>
       );
     });
