@@ -7,21 +7,36 @@ import Button from '@mui/material/Button';
 function Post({stateChanger, ...rest}){
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const addPost = () => {
+    async function addPost  ()  {
         //call API w the input to add post
         // console.log(title, description)
-        fetch('http://127.0.0.1:8000/POST/', {
-            method: 'POST',
+        await axios.post('http://127.0.0.1:8000/POST/', {
+            Post_Title: 'testing',
+            Post_Description: '0',
+            Post_image:null
+            }, {
             headers: {
-                'Content-Type': 'application/json',
-            },
-            body: {
-                Post_Title: 'testing',
-                Post_Description: '0',
-                Post_image:""
-            },
+            'Content-Type': 'application/json'
+            }
             })
-            .catch((err) => console.log('error')) 
+            .then(response => {
+            console.log(response)
+            })
+            .catch(error => {
+            console.log(error)
+            });
+        // fetch('http://127.0.0.1:8000/POST/', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: {
+        //         Post_Title: 'testing',
+        //         Post_Description: '0',
+        //         Post_image:""
+        //     },
+        //     })
+        //     .catch((err) => console.log('error')) 
 
         // const body =  {Post_Title: 'testing',
         //              Post_Description: '0',

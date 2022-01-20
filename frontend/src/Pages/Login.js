@@ -43,29 +43,30 @@ function Login() {
 
   return (
     <div className="Login">
-      <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="username">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
+      <form onSubmit={handleSubmit}>
+        <div>
+          Username
+          <input
             autoFocus
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
+        </div>
+        <div>
+          Password
+          <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
-          {" "}
+        </div>
+        <div>
+        <Button variant="contained" type="submit" disabled={!validateForm()} >
           Login
         </Button>
-      </Form>
+        </div>
+      </form>
     </div>
   );
 }

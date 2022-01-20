@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
 import {
   Card,
@@ -25,41 +26,46 @@ function Post(props, {stateChanger, ...rest}) {
     const [description, setDescription] = useState('');
     const[showAlert, setAlert] = useState(false)
     const[showDeleteAlert, setDeleteAlert] = useState(false)
-    const [comments, setComments] = useState([
-        {
-          "Comment_ID": 1,
-          "User_ID": 4,
-          "Post_ID": 19,
-          "Comment": "leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio"
-        },
-        {
-          "Comment_ID": 2,
-          "User_ID": 10,
-          "Post_ID": 9,
-          "Comment": "amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien"
-        },
-        {
-          "Comment_ID": 3,
-          "User_ID": 10,
-          "Post_ID": 10,
-          "Comment": "montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis"
-        },]);
-    const viewComments = (id) => {
-        setShow(!show)
-        //call POST COMMENT API w ID
-        //with the api response setComments()
-    };
+    const [comments, setComments] = useState([]);
+    // const viewComments = (id) => {
+    //     setShow(!show)
+    //     //call POST COMMENT API w ID
+    //     //with the api response setComments()
 
-    const deletePost = (id) => {
-       //console.log('delete')
+
+
+
+
+    // };
+
+    async function viewComments (id)  {
+      setShow(!show)
+      //call POST COMMENT API w ID
+      //with the api response setComments()
+      const result =await  axios(
+          `http://127.0.0.1:8000/POST_COMMENT/?postid=${props.post.Post_ID}`,
+          );
+          console.log(result)
+          setComments(result.data);
+  };
+
+    async function deletePost (id) {
+       
         //call POST delete API
+        const result =await  axios.delete(
+          `http://127.0.0.1:8000/POST/${props.post.Post_ID}`,
+          );
+          console.log(result)
+   
         setDeleteAlert(true)
     };
 
-    const showUpdateCard = (id) => {
+    async function showUpdateCard  (id) {
         setUpdate(!update)
         setTitle(props.post.Post_Title)
         setDescription(props.post.Post_Description)
+
+     
     };
 
     useEffect(() => {
@@ -69,14 +75,30 @@ function Post(props, {stateChanger, ...rest}) {
         }, 8000);
       }, []);     
 
-    const updatePost = (id) => {
+    async function updatePost (id) {
         //call API w the input to add post
       
        // console.log(title, description, id ) 
         //console.log(update)
         setAlert(!showAlert)
         setUpdate(!update)
-        stateChanger(title)
+       // stateChanger(title)
+
+        await axios.put('http://127.0.0.1:8000/POST/3/', {
+          Post_Title: 'testing',
+          Post_Description: '0',
+          Post_image:null
+          }, {
+          headers: {
+          'Content-Type': 'application/json'
+          }
+          })
+          .then(response => {
+          console.log(response)
+          })
+          .catch(error => {
+          console.log(error)
+          });
        
     };
 
