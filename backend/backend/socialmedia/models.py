@@ -23,7 +23,7 @@ class POST(models.Model):
     Post_Description = models.CharField(max_length = 200)
     Post_image = models.CharField(max_length=200)
     
-    def __str__(self):
+    def __int__(self):
         """A string representation of the model."""
         return self.Post_ID
 
@@ -32,7 +32,7 @@ class LIKED_POST(models.Model):
     Post_ID = models.ForeignKey(POST, on_delete=models.CASCADE)
     
     
-    def __str__(self):
+    def __int__(self):
         """A string representation of the model."""
         return self.User_ID
 
@@ -43,6 +43,6 @@ class POST_COMMENT(models.Model):
     Comment = models.CharField(max_length=200)
     
     
-    def __str__(self):
+    def __int__(self):
         """A string representation of the model."""
         return self.Comment_ID
