@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Post from "./Post"
 
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from '@mui/material';
 
 
 class ListOfPost extends Component {
