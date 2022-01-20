@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //import Axios from "axios";
 import Post from "../Components/NewPost";
 import ProfilePost from "../Components/ProfilePost";
 import Grid from "@mui/material/Grid";
 
 function Profile() {
+  const [posts, setPosts] = useState("");
+
+  useEffect(() => {
+    console.log(posts);
+    //if post button was pressed, call posts API
+  }, [posts]);
+
   return (
     <div className="container profile">
       <Grid container spacing={2}>
@@ -15,7 +22,7 @@ function Profile() {
 
         <Grid item xs={6}>
           {/* Add new post & all posts */}
-          <Post />
+          <Post stateChanger={setPosts} />
           <ProfilePost />
         </Grid>
 
