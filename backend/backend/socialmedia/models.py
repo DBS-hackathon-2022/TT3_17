@@ -11,7 +11,7 @@ class USER(models.Model):
     Phone = models.CharField(max_length = 200)
     City = models.CharField(max_length=200)
     Country = models.CharField(max_length = 200)
-    
+   
     def __int__(self):
         """A string representation of the model."""
         return self.User_ID
@@ -36,10 +36,32 @@ class LIKED_POST(models.Model):
         """A string representation of the model."""
         return self.User_ID
 
+
+
 class POST_COMMENT(models.Model):
     Comment_ID = models.AutoField(primary_key = True)
     User_ID = models.ForeignKey(USER, on_delete=models.CASCADE)
     Post_ID = models.ForeignKey(POST, on_delete=models.CASCADE)
+    Comment = models.CharField(max_length=200)
+    
+    
+    def __int__(self):
+        """A string representation of the model."""
+        return self.Comment_ID
+
+class LIKED_POST2(models.Model):
+    User_ID = models.CharField(max_length=200)
+    Post_ID = models.CharField(max_length=200)
+    
+    
+    def __int__(self):
+        """A string representation of the model."""
+        return self.User_ID
+
+class POST_COMMENT2(models.Model):
+    Comment_ID = models.AutoField(primary_key = True)
+    User_ID = models.CharField(max_length=200)
+    Post_ID = models.CharField(max_length=200)
     Comment = models.CharField(max_length=200)
     
     
