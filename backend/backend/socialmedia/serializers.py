@@ -21,8 +21,11 @@ class LikedPostSerializer(ModelSerializer):
 			 "Post_ID")
 
 
+
 class PostCommentSerializer(ModelSerializer):
 	#User_ID = UserSerializer(many=False, read_only=True)
 	class Meta:
 			model = POST_COMMENT
 			fields = ("Comment_ID", "User_ID","Post_ID","Comment")
+
+
