@@ -37,7 +37,7 @@ class LIKED_POST(models.Model):
         return self.User_ID
 
 class POST_COMMENT(models.Model):
-    Comment_ID = User_ID = models.AutoField(primary_key = True)
+    Comment_ID = models.AutoField(primary_key = True)
     User_ID = models.ForeignKey(USER, on_delete=models.CASCADE)
     Post_ID = models.ForeignKey(POST, on_delete=models.CASCADE)
     Comment = models.CharField(max_length=200)
