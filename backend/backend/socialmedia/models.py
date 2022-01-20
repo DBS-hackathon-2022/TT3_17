@@ -5,6 +5,7 @@ from django.db import models
 class USER(models.Model):
     User_ID = models.AutoField(primary_key = True)
     Name = models.CharField(max_length = 200)
+    Age = models.CharField(max_length = 200)
     Birthday = models.CharField(max_length = 200)
     Email = models.CharField(max_length=200)
     Phone = models.CharField(max_length = 200)
@@ -13,7 +14,7 @@ class USER(models.Model):
     
     def __str__(self):
         """A string representation of the model."""
-        return self.User_Name
+        return self.Name
 
 
 class POST(models.Model):
@@ -36,17 +37,6 @@ class LIKED_POST(models.Model):
         return self.User_ID
 
 class POST_COMMENT(models.Model):
-    Comment_ID = User_ID = models.AutoField(primary_key = True)
-    User_ID = models.ForeignKey(USER, on_delete=models.CASCADE)
-    Post_ID = models.ForeignKey(POST, on_delete=models.CASCADE)
-    Comment = models.CharField(max_length=200)
-    
-    
-    def __str__(self):
-        """A string representation of the model."""
-        return self.Comment_ID
-
-class TEST(models.Model):
     Comment_ID = User_ID = models.AutoField(primary_key = True)
     User_ID = models.ForeignKey(USER, on_delete=models.CASCADE)
     Post_ID = models.ForeignKey(POST, on_delete=models.CASCADE)
