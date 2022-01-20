@@ -8,8 +8,7 @@ function Profile() {
   const [posts, setPosts] = useState("");
 
   useEffect(() => {
-    console.log(posts);
-    //if post button was pressed, call posts API
+    console.log(posts); //if post button was pressed, call posts API
   }, [posts]);
 
   return (

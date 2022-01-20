@@ -4,15 +4,17 @@ import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import Axios from "axios";
+import { spacing } from "@mui/system";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <nav>
-          <Link to="/">Login</Link>
-          <Link to="/Home">Home</Link>
+          <Link to="/">Login</Link> <spacing></spacing>
+          <Link to="/Home">Home</Link> <spacing></spacing>
           <Link to="/Profile">Profile</Link>
+          <p></p>
         </nav>
         <Routes>
           <Route path="/" element={<Login />}></Route>
