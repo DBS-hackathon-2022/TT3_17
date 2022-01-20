@@ -1,16 +1,47 @@
-"""
-WSGI config for backend project.
+# todos/models.py
+from django.db import models
 
-It exposes the WSGI callable as a module-level variable named ``application``.
 
-For more information on this file, see
-https://docs.djangoproject.com/en/4.0/howto/deployment/wsgi/
-"""
+class USER(models.Model):
+	User_ID = models.AutoField(primary_key = True)
+    Name = models.CharField(max_length=200)
+    Birthday = models.CharField(max_length = 200)
+    Email = models.CharField(max_length=200)
+    Phone = models.CharField(max_length = 200)
+    City = models.CharField(max_length=200)
+    Country = models.CharField(max_length = 200)
+    
+    def __str__(self):
+        """A string representation of the model."""
+        return self.User_Name
 
-import os
 
-from django.core.wsgi import get_wsgi_application
+class POST(models.Model):
+	Post_ID = models.AutoField(primary_key = True)
+    Post_Title = models.CharField(max_length=200)
+    Post_Description = models.CharField(max_length = 200)
+    Post_image = models.CharField(max_length=200)
+    
+    def __str__(self):
+        """A string representation of the model."""
+        return self.Post_ID
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+class LIKED_POST(models.Model):
+	User_ID = models.ForeignKey(USER, on_delete=models.CASCADE)
+    Post_ID = models.ForeignKey(POST, on_delete=models.CASCADE)
+    
+    
+    def __str__(self):
+        """A string representation of the model."""
+        return self.User_ID
 
-application = get_wsgi_application()
+class POST_COMMENT(models.Model):
+	Comment_ID = User_ID = models.AutoField(primary_key = True)
+	User_ID = models.ForeignKey(USER, on_delete=models.CASCADE)
+    Post_ID = models.ForeignKey(POST, on_delete=models.CASCADE)
+    Comment = models.CharField(max_length=200)
+    
+    
+    def __str__(self):
+        """A string representation of the model."""
+        return self.Comment_ID
